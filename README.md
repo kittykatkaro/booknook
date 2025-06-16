@@ -27,13 +27,15 @@ Users can search for books using the Google Books API, save books to personal bo
 
 1. Clone the repository
 
-```bash
+```
+bash
 git clone https://github.com/yourusername/booknook.git
 ```
 
 2. Install dependecnies
 
-```cd client
+```
+cd client
 npm install
 
 cd ../server
@@ -42,7 +44,8 @@ npm install
 
 3. Start development servers
 
-```# Backend
+```
+# Backend
 node index.js
 
 # Frontend
