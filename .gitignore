@@ -1,0 +1,12 @@
+# Node modules
+client/node_modules/
+server/node_modules/
+
+# dotenv
+server/.env
+
+# OS files
+.DS_Store
+
+# IDE files
+.vscode/
