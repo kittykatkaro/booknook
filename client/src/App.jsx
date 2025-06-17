@@ -20,6 +20,24 @@ function App() {
 		}
 	};
 
+	const handleSave = async (book) => {
+		const bookData = {
+			googleBookId: book.id,
+			title: book.volumeInfo.title,
+			authors: book.volumeInfo.authors || [],
+			thumbnail: book.volumeInfo.imageLinks?.thumbnail || '',
+			averageRating: book.volumeInfo.averageRating || 0,
+		};
+
+		try {
+			await axios.post('http://localhost:5000/api/books', bookData);
+			alert('Book saved successfully!');
+		} catch (error) {
+			console.error('Error saving book:', error);
+			alert('Failed to save book. Please try again.');
+		}
+	};
+
 	return (
 		<div className="min-h-screen bg-gray-100 p-6">
 			<div className="max-w-md mx-auto">
@@ -53,6 +71,12 @@ function App() {
 								<p className="text-sm text-gray-600">
 									{book.volumeInfo.authors?.join(', ')}
 								</p>
+								<button
+									onClick={() => handleSave(book)}
+									className="mt-2 bg-green-500 text-white p-1 rounded"
+								>
+									Save
+								</button>
 							</div>
 						))}
 					</div>
