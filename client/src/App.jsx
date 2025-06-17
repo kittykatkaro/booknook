@@ -50,6 +50,16 @@ function App() {
 		}
 	};
 
+	const handleDelete = async (id) => {
+		try {
+			await axios.delete(`http://localhost:5000/api/books/${id}`);
+			setSavedBooks(savedBooks.filter((book) => book._id !== id));
+		} catch (error) {
+			console.error('Error deleting book:', error);
+			alert('Failed to delete book. Please try again.');
+		}
+	};
+
 	// Load bookshelf on mount
 	useEffect(() => {
 		fetchSavedBooks();
@@ -119,6 +129,12 @@ function App() {
 								<p className="text-sm text-gray-600">
 									{book.authors?.join(', ')}
 								</p>
+								<button
+									onClick={() => handleDelete(book._id)}
+									className="mt-2 bg-red-500 text-white py-1 px-3 rounded"
+								>
+									Delete
+								</button>
 							</div>
 						))}
 					</div>
