@@ -5,4 +5,10 @@ const BookController = require('../controllers/bookController');
 // POST: Save a new book
 router.post('/', BookController.addBook);
 
+// GET : Get all books
+router.get('/', BookController.getAllBooks);
+
+// DELETE: Delete a book by ID
+router.delete('/:id', BookController.deleteBook);
+
 module.exports = router;
