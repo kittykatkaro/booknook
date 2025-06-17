@@ -5,4 +5,7 @@ const BookController = require('../controllers/bookController');
 // POST: Save a new book
 router.post('/', BookController.addBook);
 
+// GET : Get all books
+router.get('/', BookController.getAllBooks);
+
 module.exports = router;
