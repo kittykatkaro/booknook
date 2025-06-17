@@ -76,5 +76,6 @@ npm run dev
 
 ---
 
-🌐 APIs Used
+## 🌐 APIs Used
+
 [Google Books API](https://developers.google.com/books/docs/v1/using?hl=de)
