@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import axios from 'axios';
+import { useEffect } from 'react';
 
 function App() {
 	const [searchTerm, setSearchTerm] = useState('');
 	const [books, setBooks] = useState([]);
+	const [savedBooks, setSavedBooks] = useState([]);
 
 	const handleSearch = async () => {
 		if (!searchTerm) return;
@@ -38,10 +40,27 @@ function App() {
 		}
 	};
 
+	// Fetch saved books from the server
+	const fetchSavedBooks = async () => {
+		try {
+			const response = await axios.get('http://localhost:5000/api/books');
+			setSavedBooks(response.data);
+		} catch (error) {
+			console.error('Error fetching saved books:', error);
+		}
+	};
+
+	// Load bookshelf on mount
+	useEffect(() => {
+		fetchSavedBooks();
+	}, []);
+
 	return (
 		<div className="min-h-screen bg-gray-100 p-6">
 			<div className="max-w-md mx-auto">
-				<h1 className="text-3xl font-bold mb-4">📚 BookNook Search</h1>
+				<h1 className="text-3xl font-bold mb-4">📚 BookNook</h1>
+
+				{/*Search Section*/}
 				<div className="flex mb-4">
 					<input
 						type="text"
@@ -58,6 +77,7 @@ function App() {
 					</button>
 				</div>
 
+				{/*Search Results*/}
 				{books.length > 0 && (
 					<div>
 						{books.map((book) => (
@@ -77,6 +97,28 @@ function App() {
 								>
 									Save
 								</button>
+							</div>
+						))}
+					</div>
+				)}
+
+				{/* My Bookshelf */}
+				{savedBooks.length > 0 && (
+					<div className="mt-8">
+						<h2 className="font-bold text-xl mb-2">
+							My Bookshelf:
+						</h2>
+						{savedBooks.map((book) => (
+							<div
+								key={book._id}
+								className="border p-2 mb-2 rounded bg-white shadow"
+							>
+								<h2 className="font-bold text-lg">
+									{book.title}
+								</h2>
+								<p className="text-sm text-gray-600">
+									{book.authors?.join(', ')}
+								</p>
 							</div>
 						))}
 					</div>
