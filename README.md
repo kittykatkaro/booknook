@@ -1,7 +1,7 @@
 # 📚 BookNook
 
 BookNook is a full-stack web application inspired by Goodreads.  
-Users can search for books using the Google Books API, save books to personal bookshelves, leave reviews, and track their reading.
+Users can search for books using the Google Books API, save books to personal bookshelves, and manage their collection — all with secure login.
 
 ---
 
@@ -9,8 +9,21 @@ Users can search for books using the Google Books API, save books to personal bo
 
 -   Frontend: React, Vite, Tailwind CSS
 -   Backend: Node.js, Express.js
--   Database: MongoDB (coming soon)
+-   Database: MongoDB (Atlas) via Mongoose
+-   Authentication: JWT
 -   External API: Google Books API
+
+---
+
+## 🚀 Current Features
+
+-   🔍 Book search using Google Books API
+-   ✅ Save books to your personal bookshelf
+-   🗑 Delete saved books
+-   🧾 View your saved bookshelf
+-   🔐 User registration & login (JWT auth)
+-   🔒 Protected routes for saved books (per user)
+-   💾 Full CRUD functionality with MongoDB
 
 ---
 
@@ -19,7 +32,26 @@ Users can search for books using the Google Books API, save books to personal bo
 ✅ Frontend scaffold complete  
 ✅ Tailwind CSS integrated  
 ✅ Google Books API connected  
-🚧 Backend & database integration in progress
+✅ MongoDB integration working  
+✅ Authentication implemented  
+🚧 Bookshelf linked to user accounts in progress  
+🚧 UI polish and review system planned
+
+---
+
+## 🎯 Upcoming Features
+
+-   Filter bookshelves by status (Read / Currently Reading / Want to Read)
+-   Edit and update saved book entries
+-   User reviews and star ratings
+-   Deployment to production (frontend + backend)
+-   Responsive UI polish
+
+---
+
+## 🌐 APIs Used
+
+-   [Google Books API](https://developers.google.com/books/docs/v1/using)
 
 ---
 
@@ -52,10 +84,3 @@ node index.js
 cd client
 npm run dev
 ```
-
-## 🎯 Upcoming Features
-
--   User authentication
--   Personal bookshelves (Read, Currently Reading, Want to Read)
--   Reviews & ratings
--   MongoDB integration
